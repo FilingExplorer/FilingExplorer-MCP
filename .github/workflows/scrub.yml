@@ -1,0 +1,61 @@
+name: Scrub
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scrub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Built-in checks (pull requests from forks)
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
+        env:
+          CI: "false"
+        run: python scripts/scrub_check.py --generic-only --tree
+      - name: Write pattern file
+        if: ${{ !(github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository) }}
+        env:
+          SCRUB_TERMS: ${{ secrets.SCRUB_TERMS }}
+        run: |
+          if [ -z "$SCRUB_TERMS" ]; then
+            echo "The SCRUB_TERMS secret is not available." >&2
+            exit 1
+          fi
+          umask 077
+          printf '%s\n' "$SCRUB_TERMS" > "$RUNNER_TEMP/scrub_terms.txt"
+          echo "FE_SCRUB_TERMS=$RUNNER_TEMP/scrub_terms.txt" >> "$GITHUB_ENV"
+      - name: Check commits in this event
+        if: ${{ !(github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository) }}
+        env:
+          EVENT: ${{ github.event_name }}
+          PUSH_BEFORE: ${{ github.event.before }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          case "$EVENT" in
+            pull_request) spec="$PR_BASE..$PR_HEAD" ;;
+            push) spec="${PUSH_BEFORE:-0000000000000000000000000000000000000000}..$GITHUB_SHA" ;;
+            *) spec="$GITHUB_SHA" ;;
+          esac
+          python scripts/scrub_check.py --range "$spec"
+      - name: Check tracked files
+        if: ${{ !(github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository) }}
+        run: python scripts/scrub_check.py --tree
+      - name: Check full history
+        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
+        run: python scripts/scrub_check.py --history --release
+      - name: Remove pattern file
+        if: always()
+        run: rm -f "$RUNNER_TEMP/scrub_terms.txt"

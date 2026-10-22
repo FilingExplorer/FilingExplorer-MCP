@@ -1,0 +1,10 @@
+FilingExplorer MCP Server
+Copyright 2026 Giant Octopus, LLC
+
+This product is licensed under the Apache License, Version 2.0
+(see the LICENSE file).
+
+It connects to the FilingExplorer API, which serves data derived from
+public U.S. Securities and Exchange Commission (SEC) filings. Use of the
+API is governed by the FilingExplorer terms of service, separately from
+this license.

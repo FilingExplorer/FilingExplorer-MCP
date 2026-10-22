@@ -1,0 +1,3 @@
+#!/bin/sh
+# Check staged changes before each commit.
+exec python3 "$(git rev-parse --show-toplevel)/scripts/scrub_check.py" --staged

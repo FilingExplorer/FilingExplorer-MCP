@@ -1,0 +1,187 @@
+{
+ "company": {
+  "cik": "0000000001",
+  "name": "Example Corp",
+  "symbol": "ZZEXA",
+  "currency": "USD",
+  "fiscal_year_end": "12-31"
+ },
+ "periods": [
+  {
+   "fy": 2019,
+   "end_date": "2019-12-31",
+   "fiscal_period": "FY",
+   "filing": {
+    "form": "10-K",
+    "filed_on": "2020-02-20",
+    "accession_number": "0000000001-20-000001"
+   }
+  },
+  {
+   "fy": 2020,
+   "end_date": "2020-12-31",
+   "fiscal_period": "FY",
+   "filing": {
+    "form": "10-K",
+    "filed_on": "2021-02-20",
+    "accession_number": "0000000001-21-000002"
+   }
+  },
+  {
+   "fy": 2021,
+   "end_date": "2021-12-31",
+   "fiscal_period": "FY",
+   "filing": {
+    "form": "10-K",
+    "filed_on": "2022-02-20",
+    "accession_number": "0000000001-22-000003"
+   }
+  },
+  {
+   "fy": 2022,
+   "end_date": "2022-12-31",
+   "fiscal_period": "FY",
+   "filing": {
+    "form": "10-K",
+    "filed_on": "2023-02-20",
+    "accession_number": "0000000001-23-000004"
+   }
+  },
+  {
+   "fy": 2023,
+   "end_date": "2023-12-31",
+   "fiscal_period": "FY",
+   "filing": {
+    "form": "10-K",
+    "filed_on": "2024-02-20",
+    "accession_number": "0000000001-24-000005"
+   }
+  },
+  {
+   "fy": 2024,
+   "end_date": "2024-12-31",
+   "fiscal_period": "FY",
+   "filing": {
+    "form": "10-K",
+    "filed_on": "2025-02-20",
+    "accession_number": "0000000001-25-000006"
+   }
+  }
+ ],
+ "statements": {
+  "income": {
+   "diluted_earnings_per_share": {
+    "label": "Diluted Earnings Per Share",
+    "values": [
+     4.1,
+     4.5,
+     3.2,
+     3.6,
+     3.9,
+     2.05
+    ],
+    "split_adjusted_values": [
+     null,
+     null,
+     1.6,
+     1.8,
+     null,
+     2.05
+    ],
+    "split_adjusted_withheld": [
+     "unexplained_share_break",
+     "unexplained_share_break",
+     null,
+     null,
+     "split_date_unconfirmed",
+     null
+    ]
+   },
+   "net_income_loss": {
+    "label": "Net Income Loss",
+    "values": [
+     205000000,
+     225000000,
+     240000000,
+     266400000,
+     284700000,
+     299300000
+    ]
+   }
+  },
+  "balance": {
+   "shares_outstanding": {
+    "label": "Shares Outstanding",
+    "values": [
+     50000000,
+     50000000,
+     75000000,
+     74000000,
+     73000000,
+     146000000
+    ],
+    "split_adjusted_values": [
+     null,
+     null,
+     150000000,
+     148000000,
+     null,
+     146000000
+    ],
+    "split_adjusted_withheld": [
+     "unexplained_share_break",
+     "unexplained_share_break",
+     null,
+     null,
+     "split_date_unconfirmed",
+     null
+    ]
+   },
+   "treasury_stock_value": {
+    "label": "Treasury Stock Value",
+    "values": [
+     1000000,
+     1000000,
+     null,
+     null,
+     1200000,
+     1200000
+    ]
+   }
+  }
+ },
+ "meta": {
+  "view": "raw",
+  "timeframe": "annual",
+  "fields": "full",
+  "split_adjustment": {
+   "basis_date": "2026-10-01",
+   "method": "as_reported_with_split_adjusted_companions",
+   "companions_present": true,
+   "splits": [
+    {
+     "effective_date": "2024-01-20",
+     "ratio": "2-for-1",
+     "factor": 2.0,
+     "applied": true,
+     "withheld_reasons": [
+      "split_date_unconfirmed"
+     ]
+    }
+   ],
+   "unexplained_share_breaks": [
+    {
+     "series": "shares_outstanding",
+     "from_end_date": "2020-12-31",
+     "to_end_date": "2021-12-31",
+     "ratio": 1.5
+    }
+   ]
+  },
+  "warnings": [
+   "Stock split(s) (2-for-1 on 2024-01-20) separate some periods from today's share basis. diluted_eps and shares_outstanding are as reported in each period's filing and are not comparable across a split; use diluted_eps_split_adjusted and shares_outstanding_split_adjusted for trends.",
+   "Some split-adjusted values are withheld (null) because the share basis cannot be established reliably: 2-for-1 on 2024-01-20 (split_date_unconfirmed).",
+   "The share count moves by more than recorded stock splits explain (shares_outstanding 1.5x between 2020-12-31 and 2021-12-31): an unrecorded split, a merger or a large issuance. Per-share figures are not comparable across it; split-adjusted values for periods before 2021-12-31 are withheld (null)."
+  ]
+ }
+}

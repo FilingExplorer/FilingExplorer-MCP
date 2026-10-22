@@ -1,0 +1,114 @@
+{
+ "company": {
+  "cik": "0000000001",
+  "name": "Example Corp",
+  "symbol": "ZZEXA",
+  "currency": "USD",
+  "fiscal_year_end": "12-31"
+ },
+ "periods": [
+  {
+   "fy": 2019,
+   "fiscal_period": "FY",
+   "end_date": "2019-12-31",
+   "form": "10-K",
+   "net_income": 205000000,
+   "diluted_eps": 4.1,
+   "shares_outstanding": 50000000,
+   "diluted_eps_split_adjusted": null,
+   "shares_outstanding_split_adjusted": null,
+   "split_adjustment_withheld": "unexplained_share_break"
+  },
+  {
+   "fy": 2020,
+   "fiscal_period": "FY",
+   "end_date": "2020-12-31",
+   "form": "10-K",
+   "net_income": 225000000,
+   "diluted_eps": 4.5,
+   "shares_outstanding": 50000000,
+   "diluted_eps_split_adjusted": null,
+   "shares_outstanding_split_adjusted": null,
+   "split_adjustment_withheld": "unexplained_share_break"
+  },
+  {
+   "fy": 2021,
+   "fiscal_period": "FY",
+   "end_date": "2021-12-31",
+   "form": "10-K",
+   "net_income": 240000000,
+   "diluted_eps": 3.2,
+   "shares_outstanding": 75000000,
+   "diluted_eps_split_adjusted": 1.6,
+   "shares_outstanding_split_adjusted": 150000000
+  },
+  {
+   "fy": 2022,
+   "fiscal_period": "FY",
+   "end_date": "2022-12-31",
+   "form": "10-K",
+   "net_income": 266400000,
+   "diluted_eps": 3.6,
+   "shares_outstanding": 74000000,
+   "diluted_eps_split_adjusted": 1.8,
+   "shares_outstanding_split_adjusted": 148000000
+  },
+  {
+   "fy": 2023,
+   "fiscal_period": "FY",
+   "end_date": "2023-12-31",
+   "form": "10-K",
+   "net_income": 284700000,
+   "diluted_eps": 3.9,
+   "shares_outstanding": 73000000,
+   "diluted_eps_split_adjusted": null,
+   "shares_outstanding_split_adjusted": null,
+   "split_adjustment_withheld": "split_date_unconfirmed"
+  },
+  {
+   "fy": 2024,
+   "fiscal_period": "FY",
+   "end_date": "2024-12-31",
+   "form": "10-K",
+   "net_income": 299300000,
+   "diluted_eps": 2.05,
+   "shares_outstanding": 146000000,
+   "diluted_eps_split_adjusted": 2.05,
+   "shares_outstanding_split_adjusted": 146000000
+  }
+ ],
+ "meta": {
+  "view": "raw",
+  "timeframe": "annual",
+  "fields": "compact",
+  "split_adjustment": {
+   "basis_date": "2026-10-01",
+   "method": "as_reported_with_split_adjusted_companions",
+   "companions_present": true,
+   "splits": [
+    {
+     "effective_date": "2024-01-20",
+     "ratio": "2-for-1",
+     "factor": 2.0,
+     "applied": true,
+     "withheld_reasons": [
+      "split_date_unconfirmed"
+     ]
+    }
+   ],
+   "unexplained_share_breaks": [
+    {
+     "series": "shares_outstanding",
+     "from_end_date": "2020-12-31",
+     "to_end_date": "2021-12-31",
+     "ratio": 1.5
+    }
+   ]
+  },
+  "warnings": [
+   "Stock split(s) (2-for-1 on 2024-01-20) separate some periods from today's share basis. diluted_eps and shares_outstanding are as reported in each period's filing and are not comparable across a split; use diluted_eps_split_adjusted and shares_outstanding_split_adjusted for trends.",
+   "Some split-adjusted values are withheld (null) because the share basis cannot be established reliably: 2-for-1 on 2024-01-20 (split_date_unconfirmed).",
+   "The share count moves by more than recorded stock splits explain (shares_outstanding 1.5x between 2020-12-31 and 2021-12-31): an unrecorded split, a merger or a large issuance. Per-share figures are not comparable across it; split-adjusted values for periods before 2021-12-31 are withheld (null)."
+  ]
+ }
+}
