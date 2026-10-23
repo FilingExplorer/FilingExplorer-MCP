@@ -14,7 +14,19 @@ token. There is no hosted endpoint.
 ## Requirements
 
 - Python 3.10 or newer, or [uv](https://docs.astral.sh/uv/)
-- A FilingExplorer API token (create one in your FilingExplorer account settings)
+- A FilingExplorer API token. API keys are free: [sign up](https://www.filingexplorer.com/sign-up),
+  then create a key at [filingexplorer.com/api-keys](https://www.filingexplorer.com/api-keys).
+  See [filingexplorer.com/developers](https://www.filingexplorer.com/developers) for plan limits.
+
+### Free and paid plans
+
+A free account can create an API key and use every tool in this server. The free plan has a
+small monthly request allowance (currently 100 requests a month, with short burst limits),
+which is enough to try the server over a few conversations. One MCP conversation usually makes
+several API calls, so heavier use needs a paid plan. A few options also need a paid plan: see
+the notes under [Tools](#tools).
+
+When the allowance runs out, tools return a rate-limit error that says when you can retry.
 
 ## Install and run
 
@@ -96,8 +108,9 @@ Notes:
   happens; an empty result means the data is not available, not that the fund holds nothing.
 - **Watchlist tools act only on your own account.** The API scopes every list request to the
   owner of the token.
-- Some requests (same-day or full-history filing lists, longer insider-cluster windows) need a
-  paid FilingExplorer plan. These return a clear error on other plans.
+- Some requests (same-day or full-history filing lists, older 13-F history, longer
+  insider-cluster windows) need a paid FilingExplorer plan. These return a clear error on
+  other plans.
 
 ## Output format
 
