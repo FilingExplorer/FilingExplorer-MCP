@@ -41,6 +41,15 @@ python3 scripts/scrub_check.py --tree --generic-only
   checks the diff, the commit messages and the commit identities, and runs the full check.
 - Fill in the checklist in the pull request template.
 
+## Releases (maintainers)
+
+1. Update the version in `pyproject.toml` and `src/filingexplorer_mcp/__init__.py`, and move
+   the changelog entry from "unreleased" to the release date. Merge that to `main`.
+2. Tag the merge commit on `main` and push the tag: `git tag v0.1.0 && git push origin v0.1.0`.
+3. The release workflow checks that the tag matches both versions and is on `main`, runs the
+   full publication check, lint and tests, builds, and publishes to PyPI through trusted
+   publishing. Publishing waits for approval in the `pypi` environment.
+
 ## License
 
 By contributing you agree that your contribution is licensed under the Apache License 2.0.

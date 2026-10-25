@@ -26,6 +26,11 @@ dependencies = [
 
 [project.urls]
 Homepage = "https://www.filingexplorer.com"
+Documentation = "https://github.com/FilingExplorer/FilingExplorer-MCP#readme"
+Repository = "https://github.com/FilingExplorer/FilingExplorer-MCP"
+Issues = "https://github.com/FilingExplorer/FilingExplorer-MCP/issues"
+Changelog = "https://github.com/FilingExplorer/FilingExplorer-MCP/blob/main/CHANGELOG.md"
+"API documentation" = "https://www.filingexplorer.com/api-docs"
 
 [project.scripts]
 filingexplorer-mcp = "filingexplorer_mcp.server:main"
